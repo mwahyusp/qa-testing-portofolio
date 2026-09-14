@@ -4,7 +4,7 @@
 // (quantity tidak dibatasi stok).
 // ============================================================
 
-const PRODUCTS_URL = "data/products.json";
+const PRODUCTS_URL = "/app/data/products.json";
 const CART_STORAGE_KEY = "mini_ecom_cart";
 
 const listEl = document.getElementById("cart-list");
@@ -182,6 +182,19 @@ function removeItem(id) {
 }
 
 /**
+ * Handler tombol Checkout.
+ * Arahkan ke halaman checkout kalau cart tidak kosong.
+ */
+function handleCheckout() {
+  if (cart.length === 0) {
+    messageEl.textContent = "Cart kosong, tidak bisa checkout.";
+    messageEl.className = "message error";
+    return;
+  }
+  window.location.href = "checkout.html";
+}
+
+/**
  * Event delegation untuk semua tombol di cart.
  */
 listEl.addEventListener("click", (e) => {
@@ -199,6 +212,8 @@ listEl.addEventListener("change", (e) => {
   if (!e.target.classList.contains("qty-input")) return;
   setQty(e.target.dataset.id, e.target.value);
 });
+
+btnCheckout.addEventListener("click", handleCheckout);
 
 /**
  * Init halaman cart.

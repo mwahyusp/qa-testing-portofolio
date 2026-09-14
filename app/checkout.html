@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini E-Commerce — Checkout</title>
+  <link rel="stylesheet" href="/app/styles/style.css" />
+  <link rel="stylesheet" href="/app/styles/responsive.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title">Mini E-Commerce</h1>
+    <nav class="site-nav">
+      <a href="/app/cart.html">← Kembali ke Cart</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 class="page-title">Checkout</h2>
+
+    <p id="checkout-message" class="message" role="alert"></p>
+
+    <div class="checkout-layout">
+      <form id="checkout-form" class="checkout-form" novalidate>
+        <h3 class="section-title">Alamat Pengiriman</h3>
+
+        <div class="form-group">
+          <label for="fullname">Nama Penerima</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Nama lengkap" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Nomor Telepon</label>
+          <input type="text" id="phone" name="phone" placeholder="08xxxxxxxxxx" />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Alamat Lengkap</label>
+          <textarea id="address" name="address" rows="3" placeholder="Jalan, nomor, kota, kode pos"></textarea>
+        </div>
+
+        <h3 class="section-title">Metode Pembayaran</h3>
+        <div class="payment-options">
+          <label class="radio-option">
+            <input type="radio" name="payment" value="transfer" checked />
+            <span>Transfer Bank</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="payment" value="cod" />
+            <span>COD (Bayar di Tempat)</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="payment" value="ewallet" />
+            <span>E-Wallet</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-place-order">
+          Place Order
+        </button>
+      </form>
+
+      <aside class="checkout-summary">
+        <h3 class="section-title">Ringkasan Order</h3>
+        <div id="summary-list" class="summary-list"></div>
+        <div class="summary-row">
+          <span>Total Item</span>
+          <span id="summary-items">0</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Subtotal</span>
+          <span id="summary-subtotal">Rp 0</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/app/scripts/checkout.js"></script>
+</body>
+</html>

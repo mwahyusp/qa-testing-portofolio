@@ -966,6 +966,18 @@ git push origin main
 4. Update kolom **Status** + tabel **Ringkasan per Modul** di `test-cases.md`
 5. Expected: **TC-005 Fail**, sisanya Pass
 
+## Status Pengembangan
+
 - [x] **Fase 1** — Login & Product Catalog
 - [x] **Fase 2** — Search, Product Detail, Cart
-- [ ] **Fase 3** — Checkout, Order Confirmation, RTM, Test Summary
+- [x] **Fase 3** — Checkout, Order Confirmation, RTM, Test Summary
+
+## Intentional Defects
+
+| ID  | Modul              | Deskripsi                                              | File                     |
+|-----|--------------------|--------------------------------------------------------|--------------------------|
+| #1  | Login              | Password kosong → "Invalid email format!"              | `scripts/login.js`       |
+| #2  | Search             | Pencarian case-sensitive                               | `scripts/products.js`    |
+| #3  | Cart               | Qty tidak dibatasi stok                                | `scripts/cart.js`        |
+| #4  | Checkout           | Subtotal tidak reaktif                                 | `scripts/checkout.js`    |
+| #5  | Order Confirmation | Order ID duplikat < 1 detik                            | `scripts/checkout.js`    |

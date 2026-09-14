@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini E-Commerce — Order Confirmation</title>
+  <link rel="stylesheet" href="/app/styles/style.css" />
+  <link rel="stylesheet" href="/app/styles/responsive.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title">Mini E-Commerce</h1>
+    <nav class="site-nav">
+      <a href="/app/products.html">Belanja Lagi</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="confirmation-card">
+      <div class="check-icon">✓</div>
+      <h2 class="confirmation-title">Order Berhasil!</h2>
+      <p class="confirmation-subtitle">Terima kasih, pesanan kamu sudah kami terima.</p>
+
+      <div class="confirmation-details">
+        <div class="detail-row">
+          <span>Order ID</span>
+          <strong id="order-id">-</strong>
+        </div>
+        <div class="detail-row">
+          <span>Nama Penerima</span>
+          <span id="order-name">-</span>
+        </div>
+        <div class="detail-row">
+          <span>Metode Pembayaran</span>
+          <span id="order-payment">-</span>
+        </div>
+        <div class="detail-row">
+          <span>Total Item</span>
+          <span id="order-items">0</span>
+        </div>
+        <div class="detail-row detail-total">
+          <span>Total Bayar</span>
+          <strong id="order-total">Rp 0</strong>
+        </div>
+      </div>
+
+      <div id="order-items-list" class="order-items-list"></div>
+    </section>
+
+    <p id="confirmation-message" class="message" role="alert"></p>
+  </main>
+
+  <script src="/app/scripts/confirmation.js"></script>
+</body>
+</html>

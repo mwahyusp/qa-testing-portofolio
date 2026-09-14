@@ -4,7 +4,7 @@
 // case-sensitive). Detail: test-documentation/bug-reports.md
 // ============================================================
 
-const PRODUCTS_URL = "data/products.json";
+const PRODUCTS_URL = "/app/data/products.json";
 const CART_STORAGE_KEY = "mini_ecom_cart";
 
 const listEl = document.getElementById("product-list");

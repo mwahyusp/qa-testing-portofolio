@@ -4,12 +4,13 @@
 |------------------|----------------------------------------------------|
 | **Project**      | QA Testing Portfolio — Mini E-Commerce             |
 | **Document**     | Test Cases                                         |
-| **Version**      | 2.0 (Fase 1 + Fase 2)                              |
-| **Total Cases**  | 26                                                 |
+| **Version**      | 3.0 (Fase 1 + 2 + 3)                               |
+| **Total Cases**  | 33                                                 |
 | **Fase 1**       | 17 TC (executed)                                   |
 | **Fase 2**       | 9 TC (pending execution)                           |
+| **Fase 3**       | 7 TC (pending execution)                           |
 | **Last Updated** | 2025-XX-XX                                         |
-| **Status**       | 🔄 Fase 2 in progress                              |
+| **Status**       | 🔄 Fase 3 in progress                              |
 
 **Legend**
 
@@ -33,15 +34,19 @@
 | Search             | 4         | -    | -    | 4       | -         |
 | Product Detail     | 3         | -    | -    | 3       | -         |
 | Cart               | 2         | -    | -    | 2       | -         |
-| **Total**          | **26**    | 16   | 1    | **9**   | **65.4%** |
+| Checkout           | 5         | -    | -    | 5       | -         |
+| Order Confirmation | 2         | -    | -    | 2       | -         |
+| **Total**          | **33**    | 16   | 1    | **16**  | **51.5%** |
 
 ### Ringkasan Defect
 
-| Defect ID | Test Case | Modul  | Deskripsi Singkat                                                | Severity | Priority | Status |
-|-----------|-----------|--------|------------------------------------------------------------------|----------|----------|--------|
-| DEF-001   | TC-005    | Login  | Password kosong + email valid → "Invalid email format!"          | Minor    | Medium   | Open   |
-| DEF-002   | TC-018    | Search | Pencarian case-sensitive (`kaos` tidak menemukan `Kaos`)         | Major    | High     | Open   |
-| DEF-003   | TC-026    | Cart   | Qty bisa melebihi stok produk                                    | Major    | High     | Open   |
+| Defect ID | Test Case | Modul              | Deskripsi Singkat                                        | Severity | Priority | Status |
+|-----------|-----------|--------------------|----------------------------------------------------------|----------|----------|--------|
+| DEF-001   | TC-005    | Login              | Password kosong + email valid → "Invalid email format!"  | Minor    | Medium   | Open   |
+| DEF-002   | TC-018    | Search             | Pencarian case-sensitive (`kaos` tidak menemukan `Kaos`) | Major    | High     | Open   |
+| DEF-003   | TC-026    | Cart               | Qty bisa melebihi stok produk                            | Major    | High     | Open   |
+| DEF-004   | TC-030    | Checkout           | Subtotal tidak reaktif saat qty berubah                  | Major    | High     | Open   |
+| DEF-005   | TC-033    | Order Confirmation | Order ID duplikat untuk order < 1 detik                  | Major    | High     | Open   |
 
 > Detail lengkap: lihat `bug-reports.md`.
 
@@ -82,8 +87,9 @@
 
 **Product Catalog — Summary:** 7 Pass / 0 Fail
 
-> Catatan: TC-016 statusnya ✅ untuk Fase 1, tapi **tidak berlaku lagi** di Fase 2
-> karena search bar sudah aktif. Di Fase 2, TC-016 di-superseded oleh TC-018 s/d TC-021.
+> Catatan: TC-016 statusnya ✅ untuk Fase 1, tapi **tidak berlaku lagi** di
+> Fase 2 karena search bar sudah aktif. Di Fase 2, TC-016 di-superseded
+> oleh TC-018 s/d TC-021.
 
 ---
 
@@ -93,7 +99,7 @@
 
 | ID     | Skenario                                          | Precondition            | Steps                                              | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
-| TC-018 | Search dengan keyword lowercase                   | Halaman katalog terbuka | 1. Ketik `kaos` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ✅ |
+| TC-018 | Search dengan keyword lowercase                   | Halaman katalog terbuka | 1. Ketik `kaos` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ❌ |
 | TC-019 | Search dengan keyword uppercase                   | Halaman katalog terbuka | 1. Ketik `KAOS` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ✅ |
 | TC-020 | Search dengan keyword tidak ada                   | Halaman katalog terbuka | 1. Ketik `xyz` di search bar                       | Empty state "Tidak ada produk yang cocok"          | M | ✅ |
 | TC-021 | Clear search mengembalikan seluruh produk         | Halaman katalog terbuka | 1. Ketik keyword<br>2. Hapus keyword               | 8 produk tampil kembali                            | M | ✅ |
@@ -119,29 +125,63 @@
 | ID     | Skenario                                          | Precondition                | Steps                                              | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-----------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
 | TC-025 | Add to Cart dari catalog memperbarui badge        | Halaman katalog terbuka     | 1. Klik Add to Cart pada P001                      | Badge cart di header jadi `Cart (1)`               | H | ✅ |
-| TC-026 | Qty dibatasi oleh stok produk                     | Cart berisi P001 (stok 12)  | 1. Naikkan qty jadi 99 di cart                     | Qty dibatasi max 12                                | H | ✅ |
+| TC-026 | Qty dibatasi oleh stok produk                     | Cart berisi P001 (stok 12)  | 1. Naikkan qty jadi 99 di cart                     | Qty dibatasi max 12                                | H | ❌ |
 
 **Cart — Summary:** Pending eksekusi (prediksi: TC-026 ❌)
 
 ---
 
-## 6. Catatan Eksekusi
+# FASE 3 — Checkout & Order Confirmation
+
+## 6. Modul: Checkout
+
+| ID     | Skenario                                          | Precondition              | Steps                                                          | Expected Result                                          | Priority | Status |
+|--------|---------------------------------------------------|---------------------------|----------------------------------------------------------------|----------------------------------------------------------|----------|--------|
+| TC-027 | Checkout dengan cart kosong                       | Cart kosong               | 1. Akses `checkout.html` langsung                              | Pesan error, tombol Place Order disabled                 | H | ✅ |
+| TC-028 | Validasi nama penerima kosong                     | Cart berisi item          | 1. Kosongkan nama<br>2. Isi field lain<br>3. Klik Place Order  | Pesan "Nama penerima wajib diisi."                       | H | ✅ |
+| TC-029 | Validasi format nomor telepon                     | Cart berisi item          | 1. Isi telepon `abc`<br>2. Isi field lain<br>3. Klik Place Order | Pesan "Nomor telepon harus 10–13 digit angka."        | H | ✅ |
+| TC-030 | Subtotal di checkout reaktif saat qty berubah     | Cart berisi P001 qty 1    | 1. Ubah qty di Local Storage jadi 3<br>2. Reload checkout      | Subtotal = Rp 225.000 (75.000 × 3)                      | H | ❌ |
+| TC-031 | Checkout sukses dengan data valid                 | Cart berisi item          | 1. Isi form lengkap<br>2. Klik Place Order                     | Redirect ke `confirmation.html`, cart dikosongkan        | H | ✅ |
+
+**Checkout — Summary:** Pending eksekusi (prediksi: TC-030 ❌)
+
+---
+
+## 7. Modul: Order Confirmation
+
+| ID     | Skenario                                          | Precondition                  | Steps                                                    | Expected Result                                    | Priority | Status |
+|--------|---------------------------------------------------|-------------------------------|----------------------------------------------------------|----------------------------------------------------|----------|--------|
+| TC-032 | Order Confirmation menampilkan detail order       | Sudah checkout sukses         | 1. Amati halaman confirmation                            | Order ID, nama, metode, total tampil lengkap        | H | ✅ |
+| TC-033 | Order ID unik untuk setiap order                  | Dua order dilakukan < 1 detik | 1. Checkout order pertama<br>2. Cepat checkout order kedua | Order ID kedua ≠ Order ID pertama                 | H | ❌ |
+
+**Order Confirmation — Summary:** Pending eksekusi (prediksi: TC-033 ❌)
+
+---
+
+## 8. Catatan Eksekusi
 
 ### Fase 1 — Executed
 - **Tanggal eksekusi:** 2025-XX-XX
 - **Environment:** Chrome 120+, Windows 11, `npx serve .` di `localhost:3000`
 - **Hasil:** 16 Pass / 1 Fail
 - **DEF-001** teridentifikasi pada TC-005 (intentional defect #1).
-- Screenshot: `evidence/login/TC-001.png` … `TC-010.png`, `evidence/products/TC-011.png` … `TC-017.png`.
+- Screenshot: `evidence/login/TC-001.png` … `TC-010.png`,
+  `evidence/products/TC-011.png` … `TC-017.png`.
 
 ### Fase 2 — Pending
-- **Tanggal eksekusi:** —
 - **Prediksi Fail:**
   - **TC-018** → DEF-002 (search case-sensitive)
   - **TC-026** → DEF-003 (qty tidak dibatasi stok)
 - Screenshot target:
   - TC-018 s/d TC-021 → `evidence/products/`
   - TC-022 s/d TC-026 → `evidence/cart/`
+
+### Fase 3 — Pending
+- **Prediksi Fail:**
+  - **TC-030** → DEF-004 (subtotal tidak reaktif)
+  - **TC-033** → DEF-005 (order ID duplikat)
+- Screenshot target:
+  - TC-027 s/d TC-033 → `evidence/checkout/`
 
 ### Aturan Umum
 - Screenshot tiap eksekusi disimpan sebagai `TC-XXX.png` di folder modul terkait.
@@ -150,11 +190,11 @@
 
 ---
 
-## 7. References
+## 9. References
 
 - [Test Plan](test-plan.md)
 - [Test Data](../test-data/test-data.md)
 - [Bug Reports](bug-reports.md)
 - [Regression Checklist](regression-checklist.md)
-- [Traceability Matrix](traceability-matrix.md) — Fase 3
-- [Test Summary](test-summary.md) — Fase 3
+- [Traceability Matrix](traceability-matrix.md)
+- [Test Summary](test-summary.md)

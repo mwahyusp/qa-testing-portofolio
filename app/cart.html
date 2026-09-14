@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mini E-Commerce — Cart</title>
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="/app/styles/style.css" />
+  <link rel="stylesheet" href="/app/styles/responsive.css" />
 </head>
 <body>
   <header class="site-header">
     <h1 class="site-title">Mini E-Commerce</h1>
     <nav class="site-nav">
-      <a href="products.html">← Lanjut Belanja</a>
+      <a href="/app/products.html">← Lanjut Belanja</a>
     </nav>
   </header>
 
@@ -23,7 +23,7 @@
     <section id="cart-list" class="cart-list"></section>
 
     <p id="cart-empty" class="empty-state" hidden>
-      Cart kamu masih kosong. <a href="products.html">Mulai belanja</a>.
+      Cart kamu masih kosong. <a href="/app/products.html">Mulai belanja</a>.
     </p>
 
     <aside id="cart-summary" class="cart-summary" hidden>
@@ -35,12 +35,10 @@
         <span>Subtotal</span>
         <span id="summary-subtotal">Rp 0</span>
       </div>
-      <button class="btn btn-primary" id="btn-checkout" disabled>
-        Checkout (Fase 3)
-      </button>
+      <button class="btn btn-primary" id="btn-checkout">Checkout</button>
     </aside>
   </main>
 
-  <script src="scripts/cart.js"></script>
+  <script src="/app/scripts/cart.js"></script>
 </body>
 </html>
