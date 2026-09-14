@@ -9,7 +9,7 @@
 | **Fase 1**       | 17 TC (executed)                                   |
 | **Fase 2**       | 9 TC (pending execution)                           |
 | **Fase 3**       | 7 TC (pending execution)                           |
-| **Last Updated** | 2025-XX-XX                                         |
+| **Last Updated** | 2026-XX-XX                                         |
 | **Status**       | 🔄 Fase 3 in progress                              |
 
 **Legend**
@@ -161,7 +161,7 @@
 ## 8. Catatan Eksekusi
 
 ### Fase 1 — Executed
-- **Tanggal eksekusi:** 2025-XX-XX
+- **Tanggal eksekusi:** 2026-XX-XX
 - **Environment:** Chrome 120+, Windows 11, `npx serve .` di `localhost:3000`
 - **Hasil:** 16 Pass / 1 Fail
 - **DEF-001** teridentifikasi pada TC-005 (intentional defect #1).
