@@ -68,9 +68,9 @@
 | TC-008 | Password 5 karakter (boundary bawah)           | Halaman login terbuka | 1. Isi email `user@test.com`<br>2. Isi password `12345`<br>3. Klik Login | Pesan `Password must be at least 6 characters.`          | M | ✅ |
 | TC-009 | Kredensial salah (email benar, password salah) | Halaman login terbuka | 1. Isi email `user@test.com`<br>2. Isi password `abcdef`<br>3. Klik Login | Pesan `Invalid email or password!`                       | H | ✅ |
 | TC-010 | Email dengan spasi di awal/akhir               | Halaman login terbuka | 1. Isi email `  user@test.com  `<br>2. Isi password `123456`<br>3. Klik Login | Pesan `Login successful!` (trim berhasil)                | L | ✅ |
-| TC-011 | Login | Tombol "Isi otomatis" mengisi field | Halaman login terbuka | 1. Klik tombol "Isi otomatis" | Email & password terisi `user@test.com` / `123456`, pesan success muncul | L | ✅ |
+| TC-011 | Login Tombol "Isi otomatis" mengisi field | Halaman login terbuka | 1. Klik tombol "Isi otomatis" | Email & password terisi `user@test.com` / `123456`, pesan success muncul | L | ✅ |
 
-**Login — Summary:** 9 Pass / 1 Fail (TC-005 → DEF-001)
+**Login — Summary:** 10 Pass / 1 Fail (TC-005 → DEF-001)
 
 ---
 
