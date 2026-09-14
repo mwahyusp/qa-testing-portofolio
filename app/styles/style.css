@@ -126,6 +126,19 @@ body {
   align-items: center;
   border-bottom: 1px solid #e2e8f0;
 }
+.site-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity .15s;
+}
+.site-title-link:hover {
+  opacity: .75;
+}
+.site-title-link:hover .site-title {
+  color: #2b6cb0;
+}
 .site-title { font-size: 18px; }
 .site-nav { display: flex; gap: 16px; }
 .site-nav a { color: #2b6cb0; text-decoration: none; font-size: 14px; }
