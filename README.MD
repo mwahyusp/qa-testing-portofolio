@@ -894,7 +894,8 @@ qa-testing-portofolio/
    npx serve .
    ```
 3. Buka `http://localhost:3000/app/index.html`.
-4. Login dengan:
+4. Kredensial demo sudah tertera di halaman login.
+   Klik tombol **"Isi otomatis"** atau ketik manual:
    - Email: `user@test.com`
    - Password: `123456`
 

@@ -1,4 +1,4 @@
-/* ---------- Mobile first tweaks ---------- */
+/* ---------- Mobile ---------- */
 @media (max-width: 480px) {
   .auth-card { padding: 24px; }
   .auth-title { font-size: 20px; }
@@ -11,19 +11,14 @@
 
   .product-grid { grid-template-columns: 1fr; }
 
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
+  .site-header { flex-direction: column; align-items: flex-start; gap: 8px; }
 
-  .cart-item {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+  .cart-item { grid-template-columns: 1fr; gap: 12px; }
   .cart-item-subtotal { text-align: left; }
   .cart-summary { max-width: 100%; }
+
   .modal-content { padding: 20px; }
+
   .confirmation-card { padding: 32px 20px; }
   .confirmation-title { font-size: 20px; }
 }
@@ -32,8 +27,6 @@
 @media (min-width: 481px) and (max-width: 768px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .checkout-layout {
-    grid-template-columns: 1fr;
-  }
+  .checkout-layout { grid-template-columns: 1fr; }
   .checkout-summary { position: static; }
 }

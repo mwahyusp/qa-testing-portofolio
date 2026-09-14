@@ -68,6 +68,7 @@
 | TC-008 | Password 5 karakter (boundary bawah)           | Halaman login terbuka | 1. Isi email `user@test.com`<br>2. Isi password `12345`<br>3. Klik Login | Pesan `Password must be at least 6 characters.`          | M | ✅ |
 | TC-009 | Kredensial salah (email benar, password salah) | Halaman login terbuka | 1. Isi email `user@test.com`<br>2. Isi password `abcdef`<br>3. Klik Login | Pesan `Invalid email or password!`                       | H | ✅ |
 | TC-010 | Email dengan spasi di awal/akhir               | Halaman login terbuka | 1. Isi email `  user@test.com  `<br>2. Isi password `123456`<br>3. Klik Login | Pesan `Login successful!` (trim berhasil)                | L | ✅ |
+| TC-011 | Login | Tombol "Isi otomatis" mengisi field | Halaman login terbuka | 1. Klik tombol "Isi otomatis" | Email & password terisi `user@test.com` / `123456`, pesan success muncul | L | ✅ |
 
 **Login — Summary:** 9 Pass / 1 Fail (TC-005 → DEF-001)
 
@@ -77,13 +78,13 @@
 
 | ID     | Skenario                                          | Precondition            | Steps                                                       | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-------------------------|-------------------------------------------------------------|----------------------------------------------------|----------|--------|
-| TC-011 | Katalog menampilkan seluruh 8 produk              | Halaman katalog terbuka | 1. Buka `products.html`                                     | 8 kartu produk ditampilkan                          | H | ✅ |
-| TC-012 | Harga produk tampil dalam format Rupiah           | Halaman katalog terbuka | 1. Amati harga tiap produk                                  | Format `Rp xx.xxx`                                  | M | ✅ |
-| TC-013 | Produk stok habis menampilkan label "Stok habis"  | Halaman katalog terbuka | 1. Lihat produk P003 & P008                                 | Label `Stok habis` berwarna merah                   | H | ✅ |
-| TC-014 | Tombol Add to Cart disabled untuk stok habis      | Halaman katalog terbuka | 1. Lihat produk P003 & P008                                 | Tombol **disabled**, label "Stok Habis"             | H | ✅ |
-| TC-015 | Add to Cart produk stok tersedia                  | Halaman katalog terbuka | 1. Klik Add to Cart pada P001                               | Pesan `"Kaos Polos Hitam" ditambahkan ke cart.`     | H | ✅ |
-| TC-016 | Search bar disabled di Fase 1                     | Halaman katalog terbuka | 1. Coba klik & ketik di search bar                          | Input tidak bisa diisi (disabled)                   | L | ✅ |
-| TC-017 | Error handling saat `products.json` gagal dimuat  | Halaman katalog terbuka | 1. Rename sementara `products.json`<br>2. Reload halaman     | Pesan `Terjadi kesalahan saat memuat produk.`       | M | ✅ |
+| TC-012 | Katalog menampilkan seluruh 8 produk              | Halaman katalog terbuka | 1. Buka `products.html`                                     | 8 kartu produk ditampilkan                          | H | ✅ |
+| TC-013 | Harga produk tampil dalam format Rupiah           | Halaman katalog terbuka | 1. Amati harga tiap produk                                  | Format `Rp xx.xxx`                                  | M | ✅ |
+| TC-014 | Produk stok habis menampilkan label "Stok habis"  | Halaman katalog terbuka | 1. Lihat produk P003 & P008                                 | Label `Stok habis` berwarna merah                   | H | ✅ |
+| TC-015 | Tombol Add to Cart disabled untuk stok habis      | Halaman katalog terbuka | 1. Lihat produk P003 & P008                                 | Tombol **disabled**, label "Stok Habis"             | H | ✅ |
+| TC-016 | Add to Cart produk stok tersedia                  | Halaman katalog terbuka | 1. Klik Add to Cart pada P001                               | Pesan `"Kaos Polos Hitam" ditambahkan ke cart.`     | H | ✅ |
+| TC-017 | Search bar disabled di Fase 1                     | Halaman katalog terbuka | 1. Coba klik & ketik di search bar                          | Input tidak bisa diisi (disabled)                   | L | ✅ |
+| TC-018 | Error handling saat `products.json` gagal dimuat  | Halaman katalog terbuka | 1. Rename sementara `products.json`<br>2. Reload halaman     | Pesan `Terjadi kesalahan saat memuat produk.`       | M | ✅ |
 
 **Product Catalog — Summary:** 7 Pass / 0 Fail
 
@@ -99,10 +100,10 @@
 
 | ID     | Skenario                                          | Precondition            | Steps                                              | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
-| TC-018 | Search dengan keyword lowercase                   | Halaman katalog terbuka | 1. Ketik `kaos` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ❌ |
-| TC-019 | Search dengan keyword uppercase                   | Halaman katalog terbuka | 1. Ketik `KAOS` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ✅ |
-| TC-020 | Search dengan keyword tidak ada                   | Halaman katalog terbuka | 1. Ketik `xyz` di search bar                       | Empty state "Tidak ada produk yang cocok"          | M | ✅ |
-| TC-021 | Clear search mengembalikan seluruh produk         | Halaman katalog terbuka | 1. Ketik keyword<br>2. Hapus keyword               | 8 produk tampil kembali                            | M | ✅ |
+| TC-019 | Search dengan keyword lowercase                   | Halaman katalog terbuka | 1. Ketik `kaos` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ❌ |
+| TC-020 | Search dengan keyword uppercase                   | Halaman katalog terbuka | 1. Ketik `KAOS` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ✅ |
+| TC-021 | Search dengan keyword tidak ada                   | Halaman katalog terbuka | 1. Ketik `xyz` di search bar                       | Empty state "Tidak ada produk yang cocok"          | M | ✅ |
+| TC-022 | Clear search mengembalikan seluruh produk         | Halaman katalog terbuka | 1. Ketik keyword<br>2. Hapus keyword               | 8 produk tampil kembali                            | M | ✅ |
 
 **Search — Summary:** Pending eksekusi (prediksi: TC-018 ❌, sisanya ✅)
 
@@ -112,9 +113,9 @@
 
 | ID     | Skenario                                          | Precondition            | Steps                                              | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
-| TC-022 | Buka modal detail dari nama produk                | Halaman katalog terbuka | 1. Klik nama produk P001                           | Modal terbuka dengan nama, harga, stok P001        | H | ✅ |
-| TC-023 | Tutup modal dengan tombol ×                       | Modal detail terbuka    | 1. Klik tombol ×                                   | Modal tertutup, halaman kembali normal             | M | ✅ |
-| TC-024 | Add to Cart dari modal detail                     | Modal detail terbuka    | 1. Klik Add to Cart di dalam modal                 | Cart bertambah, modal tertutup                     | H | ✅ |
+| TC-023 | Buka modal detail dari nama produk                | Halaman katalog terbuka | 1. Klik nama produk P001                           | Modal terbuka dengan nama, harga, stok P001        | H | ✅ |
+| TC-024 | Tutup modal dengan tombol ×                       | Modal detail terbuka    | 1. Klik tombol ×                                   | Modal tertutup, halaman kembali normal             | M | ✅ |
+| TC-025 | Add to Cart dari modal detail                     | Modal detail terbuka    | 1. Klik Add to Cart di dalam modal                 | Cart bertambah, modal tertutup                     | H | ✅ |
 
 **Product Detail — Summary:** Pending eksekusi
 
@@ -124,8 +125,8 @@
 
 | ID     | Skenario                                          | Precondition                | Steps                                              | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-----------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
-| TC-025 | Add to Cart dari catalog memperbarui badge        | Halaman katalog terbuka     | 1. Klik Add to Cart pada P001                      | Badge cart di header jadi `Cart (1)`               | H | ✅ |
-| TC-026 | Qty dibatasi oleh stok produk                     | Cart berisi P001 (stok 12)  | 1. Naikkan qty jadi 99 di cart                     | Qty dibatasi max 12                                | H | ❌ |
+| TC-026 | Add to Cart dari catalog memperbarui badge        | Halaman katalog terbuka     | 1. Klik Add to Cart pada P001                      | Badge cart di header jadi `Cart (1)`               | H | ✅ |
+| TC-027 | Qty dibatasi oleh stok produk                     | Cart berisi P001 (stok 12)  | 1. Naikkan qty jadi 99 di cart                     | Qty dibatasi max 12                                | H | ❌ |
 
 **Cart — Summary:** Pending eksekusi (prediksi: TC-026 ❌)
 
@@ -137,11 +138,11 @@
 
 | ID     | Skenario                                          | Precondition              | Steps                                                          | Expected Result                                          | Priority | Status |
 |--------|---------------------------------------------------|---------------------------|----------------------------------------------------------------|----------------------------------------------------------|----------|--------|
-| TC-027 | Checkout dengan cart kosong                       | Cart kosong               | 1. Akses `checkout.html` langsung                              | Pesan error, tombol Place Order disabled                 | H | ✅ |
-| TC-028 | Validasi nama penerima kosong                     | Cart berisi item          | 1. Kosongkan nama<br>2. Isi field lain<br>3. Klik Place Order  | Pesan "Nama penerima wajib diisi."                       | H | ✅ |
-| TC-029 | Validasi format nomor telepon                     | Cart berisi item          | 1. Isi telepon `abc`<br>2. Isi field lain<br>3. Klik Place Order | Pesan "Nomor telepon harus 10–13 digit angka."        | H | ✅ |
-| TC-030 | Subtotal di checkout reaktif saat qty berubah     | Cart berisi P001 qty 1    | 1. Ubah qty di Local Storage jadi 3<br>2. Reload checkout      | Subtotal = Rp 225.000 (75.000 × 3)                      | H | ❌ |
-| TC-031 | Checkout sukses dengan data valid                 | Cart berisi item          | 1. Isi form lengkap<br>2. Klik Place Order                     | Redirect ke `confirmation.html`, cart dikosongkan        | H | ✅ |
+| TC-028 | Checkout dengan cart kosong                       | Cart kosong               | 1. Akses `checkout.html` langsung                              | Pesan error, tombol Place Order disabled                 | H | ✅ |
+| TC-029 | Validasi nama penerima kosong                     | Cart berisi item          | 1. Kosongkan nama<br>2. Isi field lain<br>3. Klik Place Order  | Pesan "Nama penerima wajib diisi."                       | H | ✅ |
+| TC-030 | Validasi format nomor telepon                     | Cart berisi item          | 1. Isi telepon `abc`<br>2. Isi field lain<br>3. Klik Place Order | Pesan "Nomor telepon harus 10–13 digit angka."        | H | ✅ |
+| TC-031 | Subtotal di checkout reaktif saat qty berubah     | Cart berisi P001 qty 1    | 1. Ubah qty di Local Storage jadi 3<br>2. Reload checkout      | Subtotal = Rp 225.000 (75.000 × 3)                      | H | ❌ |
+| TC-032 | Checkout sukses dengan data valid                 | Cart berisi item          | 1. Isi form lengkap<br>2. Klik Place Order                     | Redirect ke `confirmation.html`, cart dikosongkan        | H | ✅ |
 
 **Checkout — Summary:** Pending eksekusi (prediksi: TC-030 ❌)
 
@@ -151,8 +152,8 @@
 
 | ID     | Skenario                                          | Precondition                  | Steps                                                    | Expected Result                                    | Priority | Status |
 |--------|---------------------------------------------------|-------------------------------|----------------------------------------------------------|----------------------------------------------------|----------|--------|
-| TC-032 | Order Confirmation menampilkan detail order       | Sudah checkout sukses         | 1. Amati halaman confirmation                            | Order ID, nama, metode, total tampil lengkap        | H | ✅ |
-| TC-033 | Order ID unik untuk setiap order                  | Dua order dilakukan < 1 detik | 1. Checkout order pertama<br>2. Cepat checkout order kedua | Order ID kedua ≠ Order ID pertama                 | H | ❌ |
+| TC-033 | Order Confirmation menampilkan detail order       | Sudah checkout sukses         | 1. Amati halaman confirmation                            | Order ID, nama, metode, total tampil lengkap        | H | ✅ |
+| TC-034 | Order ID unik untuk setiap order                  | Dua order dilakukan < 1 detik | 1. Checkout order pertama<br>2. Cepat checkout order kedua | Order ID kedua ≠ Order ID pertama                 | H | ❌ |
 
 **Order Confirmation — Summary:** Pending eksekusi (prediksi: TC-033 ❌)
 

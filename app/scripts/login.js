@@ -11,6 +11,7 @@ const form = document.getElementById("login-form");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const messageEl = document.getElementById("login-message");
+const btnAutofill = document.getElementById("btn-autofill");
 
 function isValidEmailFormat(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -58,6 +59,14 @@ function handleLogin(event) {
   setTimeout(() => {
     window.location.href = "/app/products.html";
   }, 800);
+}
+
+if (btnAutofill) {
+  btnAutofill.addEventListener("click", () => {
+    emailInput.value = VALID_EMAIL;
+    passwordInput.value = VALID_PASSWORD;
+    showMessage("Kredensial demo terisi. Klik Login untuk masuk.", "success");
+  });
 }
 
 form.addEventListener("submit", handleLogin);
