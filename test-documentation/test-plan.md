@@ -6,8 +6,8 @@
 | **Document**     | Test Plan                                          |
 | **Version**      | 1.0 (Fase 1)                                       |
 | **Author**       | Wahyu (QA Tester)                                  |
-| **Created**      | 2025-XX-XX                                         |
-| **Last Updated** | 2025-XX-XX                                         |
+| **Created**      | 2026-XX-XX                                         |
+| **Last Updated** | 2026-XX-XX                                         |
 | **Status**       | 🟢 Active                                          |
 
 ---

@@ -4,10 +4,12 @@
 |------------------|----------------------------------------------------|
 | **Project**      | QA Testing Portfolio — Mini E-Commerce             |
 | **Document**     | Test Cases                                         |
-| **Version**      | 1.0 (Fase 1)                                       |
-| **Total Cases**  | 17                                                 |
+| **Version**      | 2.0 (Fase 1 + Fase 2)                              |
+| **Total Cases**  | 26                                                 |
+| **Fase 1**       | 17 TC (executed)                                   |
+| **Fase 2**       | 9 TC (pending execution)                           |
 | **Last Updated** | 2025-XX-XX                                         |
-| **Status**       | 🔄 In progress                                     |
+| **Status**       | 🔄 Fase 2 in progress                              |
 
 **Legend**
 
@@ -24,13 +26,28 @@
 
 ## Ringkasan per Modul
 
-| Modul              | Jumlah TC | Pass | Fail | Not Run |
-|--------------------|-----------|------|------|---------|
-| Login              | 10        | -    | -    | 10      |
-| Product Catalog    | 7         | -    | -    | 7       |
-| **Total**          | **17**    | 0    | 0    | **17**  |
+| Modul              | Jumlah TC | Pass | Fail | Not Run | Pass Rate |
+|--------------------|-----------|------|------|---------|-----------|
+| Login              | 10        | 9    | 1    | 0       | 90%       |
+| Product Catalog    | 7         | 7    | 0    | 0       | 100%      |
+| Search             | 4         | -    | -    | 4       | -         |
+| Product Detail     | 3         | -    | -    | 3       | -         |
+| Cart               | 2         | -    | -    | 2       | -         |
+| **Total**          | **26**    | 16   | 1    | **9**   | **65.4%** |
+
+### Ringkasan Defect
+
+| Defect ID | Test Case | Modul  | Deskripsi Singkat                                                | Severity | Priority | Status |
+|-----------|-----------|--------|------------------------------------------------------------------|----------|----------|--------|
+| DEF-001   | TC-005    | Login  | Password kosong + email valid → "Invalid email format!"          | Minor    | Medium   | Open   |
+| DEF-002   | TC-018    | Search | Pencarian case-sensitive (`kaos` tidak menemukan `Kaos`)         | Major    | High     | Open   |
+| DEF-003   | TC-026    | Cart   | Qty bisa melebihi stok produk                                    | Major    | High     | Open   |
+
+> Detail lengkap: lihat `bug-reports.md`.
 
 ---
+
+# FASE 1 — Login & Product Catalog
 
 ## 1. Modul: Login
 
@@ -47,6 +64,8 @@
 | TC-009 | Kredensial salah (email benar, password salah) | Halaman login terbuka | 1. Isi email `user@test.com`<br>2. Isi password `abcdef`<br>3. Klik Login | Pesan `Invalid email or password!`                       | H | ✅ |
 | TC-010 | Email dengan spasi di awal/akhir               | Halaman login terbuka | 1. Isi email `  user@test.com  `<br>2. Isi password `123456`<br>3. Klik Login | Pesan `Login successful!` (trim berhasil)                | L | ✅ |
 
+**Login — Summary:** 9 Pass / 1 Fail (TC-005 → DEF-001)
+
 ---
 
 ## 2. Modul: Product Catalog
@@ -61,21 +80,81 @@
 | TC-016 | Search bar disabled di Fase 1                     | Halaman katalog terbuka | 1. Coba klik & ketik di search bar                          | Input tidak bisa diisi (disabled)                   | L | ✅ |
 | TC-017 | Error handling saat `products.json` gagal dimuat  | Halaman katalog terbuka | 1. Rename sementara `products.json`<br>2. Reload halaman     | Pesan `Terjadi kesalahan saat memuat produk.`       | M | ✅ |
 
+**Product Catalog — Summary:** 7 Pass / 0 Fail
+
+> Catatan: TC-016 statusnya ✅ untuk Fase 1, tapi **tidak berlaku lagi** di Fase 2
+> karena search bar sudah aktif. Di Fase 2, TC-016 di-superseded oleh TC-018 s/d TC-021.
+
 ---
 
-## 3. Catatan Eksekusi
+# FASE 2 — Search, Product Detail, Cart
 
-- **TC-005** diprediksi **Fail** — intentional defect #1 (lihat bug-reports.md di Fase 2).
-- **TC-014** sekarang **Pass** karena Defect #2 sudah diperbaiki di revisi Fase 1.
-- Screenshot setiap eksekusi disimpan sebagai `TC-XXX.png` di folder
-  `evidence/login/` atau `evidence/products/`.
+## 3. Modul: Search
+
+| ID     | Skenario                                          | Precondition            | Steps                                              | Expected Result                                    | Priority | Status |
+|--------|---------------------------------------------------|-------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
+| TC-018 | Search dengan keyword lowercase                   | Halaman katalog terbuka | 1. Ketik `kaos` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ✅ |
+| TC-019 | Search dengan keyword uppercase                   | Halaman katalog terbuka | 1. Ketik `KAOS` di search bar                      | Menampilkan **Kaos Polos Hitam**                   | H | ✅ |
+| TC-020 | Search dengan keyword tidak ada                   | Halaman katalog terbuka | 1. Ketik `xyz` di search bar                       | Empty state "Tidak ada produk yang cocok"          | M | ✅ |
+| TC-021 | Clear search mengembalikan seluruh produk         | Halaman katalog terbuka | 1. Ketik keyword<br>2. Hapus keyword               | 8 produk tampil kembali                            | M | ✅ |
+
+**Search — Summary:** Pending eksekusi (prediksi: TC-018 ❌, sisanya ✅)
+
+---
+
+## 4. Modul: Product Detail
+
+| ID     | Skenario                                          | Precondition            | Steps                                              | Expected Result                                    | Priority | Status |
+|--------|---------------------------------------------------|-------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
+| TC-022 | Buka modal detail dari nama produk                | Halaman katalog terbuka | 1. Klik nama produk P001                           | Modal terbuka dengan nama, harga, stok P001        | H | ✅ |
+| TC-023 | Tutup modal dengan tombol ×                       | Modal detail terbuka    | 1. Klik tombol ×                                   | Modal tertutup, halaman kembali normal             | M | ✅ |
+| TC-024 | Add to Cart dari modal detail                     | Modal detail terbuka    | 1. Klik Add to Cart di dalam modal                 | Cart bertambah, modal tertutup                     | H | ✅ |
+
+**Product Detail — Summary:** Pending eksekusi
+
+---
+
+## 5. Modul: Cart
+
+| ID     | Skenario                                          | Precondition                | Steps                                              | Expected Result                                    | Priority | Status |
+|--------|---------------------------------------------------|-----------------------------|----------------------------------------------------|----------------------------------------------------|----------|--------|
+| TC-025 | Add to Cart dari catalog memperbarui badge        | Halaman katalog terbuka     | 1. Klik Add to Cart pada P001                      | Badge cart di header jadi `Cart (1)`               | H | ✅ |
+| TC-026 | Qty dibatasi oleh stok produk                     | Cart berisi P001 (stok 12)  | 1. Naikkan qty jadi 99 di cart                     | Qty dibatasi max 12                                | H | ✅ |
+
+**Cart — Summary:** Pending eksekusi (prediksi: TC-026 ❌)
+
+---
+
+## 6. Catatan Eksekusi
+
+### Fase 1 — Executed
+- **Tanggal eksekusi:** 2025-XX-XX
+- **Environment:** Chrome 120+, Windows 11, `npx serve .` di `localhost:3000`
+- **Hasil:** 16 Pass / 1 Fail
+- **DEF-001** teridentifikasi pada TC-005 (intentional defect #1).
+- Screenshot: `evidence/login/TC-001.png` … `TC-010.png`, `evidence/products/TC-011.png` … `TC-017.png`.
+
+### Fase 2 — Pending
+- **Tanggal eksekusi:** —
+- **Prediksi Fail:**
+  - **TC-018** → DEF-002 (search case-sensitive)
+  - **TC-026** → DEF-003 (qty tidak dibatasi stok)
+- Screenshot target:
+  - TC-018 s/d TC-021 → `evidence/products/`
+  - TC-022 s/d TC-026 → `evidence/cart/`
+
+### Aturan Umum
+- Screenshot tiap eksekusi disimpan sebagai `TC-XXX.png` di folder modul terkait.
 - Setelah eksekusi, update kolom **Status** dan tabel **Ringkasan per Modul**.
+- Untuk setiap Fail, buat entry di `bug-reports.md`.
 
 ---
 
-## 4. References
+## 7. References
 
 - [Test Plan](test-plan.md)
 - [Test Data](../test-data/test-data.md)
-- [Bug Reports](bug-reports.md) — Fase 2
-- [Regression Checklist](regression-checklist.md) — Fase 2
+- [Bug Reports](bug-reports.md)
+- [Regression Checklist](regression-checklist.md)
+- [Traceability Matrix](traceability-matrix.md) — Fase 3
+- [Test Summary](test-summary.md) — Fase 3

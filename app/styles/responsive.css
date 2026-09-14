@@ -16,6 +16,14 @@
     align-items: flex-start;
     gap: 8px;
   }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .cart-item-subtotal { text-align: left; }
+  .cart-summary { max-width: 100%; }
+  .modal-content { padding: 20px; }
 }
 
 /* ---------- Tablet ---------- */

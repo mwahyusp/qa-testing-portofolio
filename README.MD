@@ -505,8 +505,8 @@ body {
 | **Document**     | Test Plan                                          |
 | **Version**      | 1.0 (Fase 1)                                       |
 | **Author**       | Wahyu (QA Tester)                                  |
-| **Created**      | 2025-XX-XX                                         |
-| **Last Updated** | 2025-XX-XX                                         |
+| **Created**      | 2026-XX-XX                                         |
+| **Last Updated** | 2026-XX-XX                                         |
 | **Status**       | 🟢 Active                                          |
 
 ---
@@ -682,7 +682,7 @@ Kategori:
 | **Document**     | Test Cases                                         |
 | **Version**      | 1.0 (Fase 1)                                       |
 | **Total Cases**  | 17                                                 |
-| **Last Updated** | 2025-XX-XX                                         |
+| **Last Updated** | 2026-XX-XX                                         |
 | **Status**       | 🔄 In progress                                     |
 
 **Legend**
@@ -769,7 +769,7 @@ Kategori:
 | **Project**      | QA Testing Portfolio — Mini E-Commerce             |
 | **Document**     | Test Data                                          |
 | **Version**      | 1.0 (Fase 1)                                       |
-| **Last Updated** | 2025-XX-XX                                         |
+| **Last Updated** | 2026-XX-XX                                         |
 
 ---
 
@@ -966,3 +966,6 @@ git push origin main
 4. Update kolom **Status** + tabel **Ringkasan per Modul** di `test-cases.md`
 5. Expected: **TC-005 Fail**, sisanya Pass
 
+- [x] **Fase 1** — Login & Product Catalog
+- [x] **Fase 2** — Search, Product Detail, Cart
+- [ ] **Fase 3** — Checkout, Order Confirmation, RTM, Test Summary

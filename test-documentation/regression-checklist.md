@@ -5,7 +5,7 @@
 | **Project**      | QA Testing Portfolio — Mini E-Commerce             |
 | **Document**     | Regression Checklist                               |
 | **Version**      | 1.0 (Fase 2)                                       |
-| **Last Updated** | 2025-XX-XX                                         |
+| **Last Updated** | 2026-XX-XX                                         |
 
 ---
 
