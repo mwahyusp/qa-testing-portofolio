@@ -1,0 +1,11 @@
+# Excel / Word temp files
+~$*.xlsx
+~$*.docx
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node (kalau nanti pakai npx serve)
+node_modules/

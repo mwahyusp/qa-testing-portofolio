@@ -1,0 +1,10 @@
+[
+  { "id": "P001", "name": "Kaos Polos Hitam",     "price": 75000,  "stock": 12, "category": "Pakaian" },
+  { "id": "P002", "name": "Kemeja Flanel",        "price": 150000, "stock": 5,  "category": "Pakaian" },
+  { "id": "P003", "name": "Sepatu Sneakers",      "price": 320000, "stock": 0,  "category": "Sepatu" },
+  { "id": "P004", "name": "Tas Ransel",           "price": 210000, "stock": 7,  "category": "Tas" },
+  { "id": "P005", "name": "Topi Baseball",        "price": 45000,  "stock": 20, "category": "Aksesoris" },
+  { "id": "P006", "name": "Jaket Bomber",         "price": 275000, "stock": 3,  "category": "Pakaian" },
+  { "id": "P007", "name": "Celana Chino",         "price": 180000, "stock": 9,  "category": "Pakaian" },
+  { "id": "P008", "name": "Jam Tangan Digital",   "price": 400000, "stock": 0,  "category": "Aksesoris" }
+]
